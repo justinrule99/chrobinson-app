@@ -1,12 +1,9 @@
-import React  from "react";
-import '../styles/CountryMap.css'
 import {Stage, Layer} from "react-konva";
 import CountryItem from "./CountryItem";
 
 const CountryMap = ({list}) => {
     const HORIZONTAL_CENTER = 240
 
-    // array of coords, setup to map over rect and text objects
     const coords = [
         {
             x: HORIZONTAL_CENTER,
@@ -59,19 +56,13 @@ const CountryMap = ({list}) => {
             text: "PAN"
         }
     ]
-    // update list based on selected for each
 
     return (
         <Stage width={600} height={600} className="stage">
             <Layer>
-                {coords.map((item) => {
-                    // set selected prop
-                    item.selected = !!list.includes(item.text);
-
-                    return (
-                        <CountryItem x={item.x} y={item.y} text={item.text} selected={item.selected} />
-                    );
-                })}
+                {coords.map((item) =>
+                    <CountryItem x={item.x} y={item.y} text={item.text} selected={list.includes(item.text)} />
+                )}
             </Layer>
         </Stage>
     );

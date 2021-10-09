@@ -1,12 +1,12 @@
-import '../styles/App.css';
 import {useState} from "react";
+import '../styles/App.css';
 import {getCountries} from "../utils";
 import CountryMap from "./CountryMap";
 
 const App = () => {
     const [input, setInput] = useState('');
     const [countryList, setCountryList] = useState([]);
-    const [countryError, setCountryError] = useState(false);
+    const [countryError, setCountryError] = useState('');
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -20,18 +20,17 @@ const App = () => {
 
         const list = getCountries(input);
         if (!list.length) {
-            // error popup
-            setCountryError(true);
+            setCountryError(`Error: ${input} is not a valid country`);
         } else {
-            setCountryError(false);
+            setCountryError('');
         }
 
         setCountryList(list);
-
     }
 
     const handleClear = () => {
         setCountryList([]);
+        setCountryError('');
         setInput('');
     }
 
@@ -48,12 +47,15 @@ const App = () => {
                         spellCheck={false}
                         onChange={handleChange}/>
                 </label>
-                <input type="submit" value="Submit" className="submitButton"/>
-                <input type="reset" value="Clear" className="submitButton" onClick={handleClear}/>
+                <input type="submit" value="Submit" className="button submitButton"/>
+                <input type="reset" value="Clear" className="button cancelButton" onClick={handleClear}/>
             </form>
-            {countryList.length ?
-                <p>{countryList}</p>
-                : <p>{`Error: Invalid Country`}</p>}
+            <div className="text">
+                {countryList.length ?
+                    <p>{countryList.join(', ')}</p> :
+                    <p>{countryError}</p>
+                }
+            </div>
             <CountryMap list={countryList} />
             <h4>{"Created by Justin Rule for C.H. Robinson, October 2021"}</h4>
         </div>

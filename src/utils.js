@@ -1,4 +1,3 @@
-// some utilities for getting countries
 
 class TreeNode {
     constructor(code) {
@@ -8,7 +7,7 @@ class TreeNode {
     }
 }
 
-// init tree here
+// Init tree here
 let usa = new TreeNode("USA");
 let can = new TreeNode("CAN");
 let mex = new TreeNode("MEX");
@@ -29,11 +28,7 @@ hnd.left = nic;
 nic.left = cri;
 cri.left = pan;
 
-// path as empty array
-
 const getCountriesHelper = (node, dest, path) => {
-    // root is assumed to be local usa var
-    // push each visited country. return correct list if found. otherwise null
     if (!node) {
         return false;
     }
@@ -48,27 +43,12 @@ const getCountriesHelper = (node, dest, path) => {
         return true;
     }
 
-    // if reached, we can't find the path with current node. remove from list
+    // If this code is reached, we can't find a path with current node, so remove it from the list
     path.pop();
     return false;
 }
 
-const traverse = (node) => {
-    if (!node) {
-        return;
-    }
-
-    console.log(node.code);
-    traverse(node.left);
-    traverse(node.right);
-
-}
-
-// traverse(usa);
-
 export const getCountries = (dest) => {
-    // get list from us -> country
-    // will traverse list
     let path = [];
     let hasPath = getCountriesHelper(usa, dest, path);
     if (hasPath) {
@@ -76,11 +56,3 @@ export const getCountries = (dest) => {
     }
     return [];
 }
-
-let res = getCountries("CAN");
-console.log(res)
-
-
-
-
-

@@ -2,9 +2,16 @@
 
 Created by Justin Rule
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was made with [React](https://reactjs.org/) and [Konva](https://konvajs.org/) for graphics.
 
-## Available Scripts
+The logic for this application is primarily implemented in `utils.js`, where the list of countries is set up as a tree structure.\
+Given a three letter country code, `getCountries()` will return a list of countries you must travel through from the USA.
+
+This function is called when a user clicks `Submit` on the form in `App.js`.\
+Then, country information is passed as props to `CountryMap` and `CountryItem`, where Konva is used to render a box for each country, colored as blue
+if it's included in the country list. 
+
+## Running Locally
 
 In the project directory, you can run:
 
@@ -12,11 +19,6 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `yarn build`
 
