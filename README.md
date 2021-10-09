@@ -11,6 +11,8 @@ This function is called when a user clicks `Submit` on the form in `App.js`.\
 Then, country information is passed as props to `CountryMap` and `CountryItem`, where Konva is used to render a box for each country, colored as blue
 if it's included in the country list. 
 
+This project is hosted with [Firebase](https://firebase.google.com/) at [https://chrobinson-app-jrule.web.app/](https://chrobinson-app-jrule.web.app/)
+
 ## Running Locally
 
 In the project directory, you can run:
